@@ -1,12 +1,12 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
   
-geometry_msgs::Twist msg_foots;
+geometry_msgs::Twist msg_footh;
 
 void speed_ms_to_foots(const geometry_msgs::Twist& msg)
 {
   double speed_ms = msg.linear.x;
-  msg_foots.linear.x = 3.28084*speed_ms;
+  msg_footh.linear.x = 3.28084*speed_ms*3600;
 }
 
 int main(int argc, char **argv)
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
   while (ros::ok())
   {
-    chatter_pub.publish(msg_foots);
+    chatter_pub.publish(msg_footh);
     ros::spinOnce();
     loop_rate.sleep();
   }
